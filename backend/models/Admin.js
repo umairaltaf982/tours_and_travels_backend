@@ -11,6 +11,16 @@ const adminSchema = new mongoose.Schema({
   },
   password: { type: String, required: true },
   role: { type: String, default: 'admin' },
+  otp: String,
+  otpExpiry: Date,
+  isMfaEnabled: {
+    type: Boolean,
+    default: false
+  },
+  isOtpVerified: {
+    type: Boolean,
+    default: false
+  }
 }, { timestamps: true });
 
 adminSchema.methods.matchPassword = async function (enteredPassword) {
